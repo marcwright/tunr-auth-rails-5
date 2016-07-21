@@ -1,24 +1,5 @@
-# README
+- The master branch is Rails 5 starter code for this [nested routes lesson](https://github.com/ga-wdi-lessons/rails-routing)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- The `routes` branch is a finished Rails 5 version of the above nested routes lesson.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- The `auth` branch is a finished Rails 5 version of this [auth-without-devise lesson](https://github.com/ga-wdi-lessons/rails-auth/blob/master/auth-without-devise.md)
