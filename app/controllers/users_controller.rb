@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate
 
   def sign_up
   end
@@ -26,16 +27,26 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     if !@user
       message = "This user doesn't exist!"
+      redirect_to action: :sign_up
     elsif !BCrypt::Password.new(@user.password_digest).is_password?(params[:password])
       message = "Your password's wrong!"
+      redirect_to action: :sign_in
     else
-      message = "You're signed in, #{@user.username}!"
+      message = "You're signed in, #{@user.username}! "
+      cookies[:username] = {
+        value: @user.username,
+        expires: 100.years.from_now
+      }
+      flash[:notice] = message
+      session[:user] = @user
+      redirect_to artists_path
     end
     flash[:notice] = message
-    redirect_to action: :sign_in
+
   end
 
   def sign_out
+    reset_session
     flash[:notice] = "You're signed out!"
     redirect_to root_url
   end
